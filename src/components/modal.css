@@ -229,6 +229,12 @@
   white-space: nowrap;
 }
 
+.btn:disabled {
+  background-color: var(--subduedColor) !important;
+  border: 2px solid var(--subduedColor);
+  cursor: not-allowed;
+}
+
 .btn:hover,
 .btn:focus {
   background-color: var(--baseColor);
@@ -528,5 +534,28 @@
   h3 {
     padding-top: 1em;
     text-align: center;
+  }
+}
+
+.agreeToTerms {
+  display: block;
+  position: relative;
+  width: auto;
+  height: auto;
+  margin: 14px auto 0;
+  padding-bottom: 0;
+  outline: 0;
+  cursor: pointer;
+  color: var(--baseColor);
+  border: none;
+  background-color: inherit;
+  transition: border-color 0.2s ease;
+  font-family: var(--fontFamily);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+
+  input {
+    margin-right: 10px;
   }
 }

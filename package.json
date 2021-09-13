@@ -68,7 +68,7 @@
     "build:bundle": "cross-env NODE_ENV=production webpack --config webpack.config.babel.js",
     "build:umd": "cross-env NODE_ENV=production webpack --config webpack.umd.config.babel.js",
     "changelog": "auto-changelog --template keepachangelog -p && git add CHANGELOG.md",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --progress --config webpack.config.babel.js",
+    "dev": "cross-env NODE_ENV=development webpack serve --inline --progress --config webpack.config.babel.js",
     "format": "prettier --write 'src/**/*.js' '*.js'",
     "format-preview": "prettier --list-different 'src/**/*.js' '*.js'",
     "format-check": "prettier --check 'src/**/*.js' '*.js'",

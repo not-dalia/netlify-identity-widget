@@ -5,11 +5,13 @@ import Button from "./button";
 export default class UserForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { name: "", email: "", password: "" };
+    this.state = { name: "", email: "", password: "", agreeToTerms: false };
   }
 
   handleInput = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    const target = e.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({ [e.target.name]: value });
   };
 
   handleLogin = (e) => {
@@ -19,7 +21,7 @@ export default class UserForm extends Component {
 
   render() {
     const { page, message, saving, namePlaceholder, t } = this.props;
-    const { name, email, password } = this.state;
+    const { name, email, password, agreeToTerms } = this.state;
 
     return (
       <form
@@ -85,7 +87,17 @@ export default class UserForm extends Component {
             </label>
           </div>
         )}
+        {page.signup && (<label className="agreeToTerms">
+          <input
+            name="agreeToTerms"
+            type="checkbox"
+            checked={agreeToTerms}
+            onChange={this.handleInput}
+            />
+            I agree to Netlify's <a href="https://www.netlify.com/privacy/" target="blank">Privacy Policy</a> and <a href="https://www.netlify.com/legal/terms-of-use/" target="blank">Terms of Service</a>
+        </label>)}
         <Button
+          disabled={page.signup && !agreeToTerms}
           saving={saving}
           text={t(page.button)}
           saving_text={t(page.button_saving)}
